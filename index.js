@@ -1,14 +1,18 @@
 import express from 'express';
-const cors = require('cors');
+import cors from 'cors';
+
 const app = express();
 const port = 9000;
 
+// Enable CORS for all routes
 app.use(cors());
 
-app.use('/', (req, res)=>{
-    res.json({message: "Hello from api"});
-})
+// Define a GET route for the root path
+app.get('/', (req, res) => {
+    res.json({ message: "Hello from API" });
+});
 
-app.listen(9000, ()=>{
-    console.log('Hello');
-})
+// Start the server
+app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
+});
