@@ -16,7 +16,6 @@ app.get('/bye', (req, res)=>{
 })
 
 app.post('/data', (req,res)=>{
-    const {temp} = req.body;
     try{
         res.send('temp');
     }catch(e){
