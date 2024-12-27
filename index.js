@@ -1,9 +1,10 @@
-const express = require('express');
-const axios = require('axios');
+
+import express, { json } from 'express';
+import { post } from 'axios';
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.json()); // For parsing application/json
+app.use(json()); // For parsing application/json
 
 // Endpoint to send message to Botpress and get a response
 app.post('/send-message', async (req, res) => {
@@ -11,7 +12,7 @@ app.post('/send-message', async (req, res) => {
 
   try {
     // Send the message to Botpress webhook
-    const response = await axios.post('https://webhook.botpress.cloud/f1984cf2-0a55-4199-9e76-f6a6e2fc36b5', {
+    const response = await post('https://webhook.botpress.cloud/f1984cf2-0a55-4199-9e76-f6a6e2fc36b5', {
       event: 'user_message',
       payload: {
         text: message,
