@@ -6,7 +6,6 @@ const port = 9000;
 // Enable CORS for all routes
 app.use(cors());
 app.use(express.json());
-mongoose.connect(conStr).then(() => console.log("DB")).catch(e => console.log(e));
 
 app.get('/', (req, res) => {
     res.json({ message: "Hello from API" });
@@ -17,8 +16,9 @@ app.get('/bye', (req, res)=>{
 })
 
 app.post('/data', (req,res)=>{
+    const {temp} = req.body;
     try{
-        res.json({message: 'Hello'});
+        res.send('temp');
     }catch(e){
         console.log(e)
     };
